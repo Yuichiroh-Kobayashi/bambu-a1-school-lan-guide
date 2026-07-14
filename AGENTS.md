@@ -27,6 +27,7 @@ When explaining networks, use schematic and general wording only.
 - Use Pull Requests for review.
 - If public content changes, check whether `CHANGELOG.md` needs an update.
 - Run inspection scripts even for documentation-only changes.
+- Passing the public-content inspection script does not guarantee that the content is safe to publish. Human review of diffs is still required before publication.
 
 ## Validation
 

@@ -32,6 +32,7 @@ def target_exists(source: Path, href: str) -> bool:
 
 def main() -> int:
     findings = []
+    warnings = []
     for path in ROOT.rglob("*.md"):
         if ".git" in path.relative_to(ROOT).parts:
             continue
@@ -40,6 +41,22 @@ def main() -> int:
                 href = match.group(1)
                 if not target_exists(path, href):
                     findings.append(f"{path.relative_to(ROOT).as_posix()}:{lineno}: missing link target: {href}")
+                    continue
+                href_text = href.strip()
+                if path.relative_to(ROOT).parts[0] == "docs" and not href_text.startswith(("#", "http://", "https://", "mailto:", "tel:")):
+                    path_part = unquote(href_text.split("#", 1)[0].split("?", 1)[0])
+                    if path_part:
+                        target = (path.parent / path_part).resolve()
+                        try:
+                            rel_target = target.relative_to(ROOT)
+                        except ValueError:
+                            warnings.append(f"{path.relative_to(ROOT).as_posix()}:{lineno}: docs外への相対リンク: {href}")
+                        else:
+                            if rel_target.parts and rel_target.parts[0] != "docs":
+                                warnings.append(f"{path.relative_to(ROOT).as_posix()}:{lineno}: docs外への相対リンク: {href}")
+    if warnings:
+        print("警告: docs配下のMarkdownからdocs外への相対リンクがあります:")
+        print("\n".join(warnings))
     if findings:
         print("存在しない内部リンクを検出しました:")
         print("\n".join(findings))

@@ -24,4 +24,4 @@ python scripts/check_internal_links.py
 
 ## ライセンス
 
-記事・文書は、特記がない限り [CC BY-SA 4.0](LICENSE) で公開します。第三者資料の長文転載は行わず、公式資料は要約と参考リンクで示します。
+Copyright (c) 2026 Yuichiroh Kobayashi。記事・文書は、特記がない限り [CC BY-SA 4.0](LICENSE) で公開します。第三者資料の長文転載は行わず、公式資料は要約と参考リンクで示します。商標、製品名、公式資料、その他の第三者資料は、各権利者が明示しない限りCC BY-SA 4.0の対象外です。
