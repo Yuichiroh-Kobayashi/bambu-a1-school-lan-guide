@@ -17,9 +17,31 @@ This repository is a public documentation repository for a GitHub Pages site abo
 
 ## Prohibited details
 
-Do not commit or publish school names, local government names, real internal network values, real SSIDs, passwords, access codes, proxy details, internal domains, device names, user IDs, email addresses, MAC addresses, identifiable student/staff information, internal scripts, or internal manual content.
+Do not commit or publish school names (except when a school or institution name is part of the permitted public-source attribution described below), local government names, real internal network values, real SSIDs, passwords, access codes, proxy details, internal domains, device names, user IDs, email addresses, MAC addresses, identifiable student/staff information, internal scripts, or internal manual content.
 
 When explaining networks, use schematic and general wording only.
+
+## Public source attribution
+
+Public bibliographic attribution is allowed when it is necessary to identify or credit an already-public source.
+
+Allowed attribution may include:
+
+- the author's name as published in the cited source;
+- the author's institutional affiliation as published in the cited source;
+- the publishing institution, school, university, college, company, organization, or research body;
+- the official title of the public document; and
+- the public source URL.
+
+This exception covers only information that is already public in the cited source and that is needed to identify or credit that source.
+
+As a rule, a public source URL or an equally public document must exist for any author name or affiliation that is published here. Do not add a person or an affiliation that cannot be confirmed in a public source. Private knowledge, such as personal acquaintance, private conversations, or meeting someone at a training session, is not a basis for publication.
+
+Do not use this exception to identify the user's own school, a participating or cooperating school, a local government, students, teachers, staff, or other people involved in field practice.
+
+Do not enrich a citation with information that is not present in the cited public source, such as email addresses, phone numbers, social accounts, researcher profiles, separately searched or inferred affiliations, or private relationships. Do not link a cited author's published affiliation to the field-practice sites described in this repository.
+
+Publication attribution and field-practice identification are separate categories. Public attribution does not relax the privacy or internal-information rules in this file. Anonymization of school practice, student privacy, teacher and staff privacy, network secrecy, and internal operational secrecy remain unchanged.
 
 ## Git workflow
 
