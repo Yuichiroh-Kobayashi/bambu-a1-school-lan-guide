@@ -569,6 +569,57 @@ a:hover {
 }
 
 /* ------------------------------------------------------------------ *
+ * Comparison tables in the modeling-environment article
+ * ------------------------------------------------------------------ *
+ *
+ * Scoped to the two tables carrying `.modeling-table` via a Kramdown block
+ * IAL, so the generic table rules above stay untouched for every other page.
+ *
+ * `table-layout: fixed` makes the declared column widths authoritative, which
+ * is what lets the first "製品名" column render at the same width in both
+ * tables. The percentages are of the same content column, so the two first
+ * columns resolve to the same pixel width. Widths were tuned by measurement
+ * so that the headers listed below stay on one line at desktop widths while
+ * the body cells wrap normally; nothing is forced with a blanket nowrap.
+ */
+
+.page__content .modeling-table {
+  table-layout: fixed;
+  /* Below roughly this width the declared columns would squeeze the product
+     names past readability and break them mid-token. The desktop content
+     column is wider than this, so the floor only engages on narrow viewports,
+     where the .page__content scroller absorbs it; the page itself never
+     scrolls sideways. */
+  min-width: 50rem;
+}
+
+/* Table 1 — 端末と提供形態 */
+.page__content .modeling-table--platform th:nth-child(1),
+.page__content .modeling-table--platform td:nth-child(1) { width: 15%; }
+.page__content .modeling-table--platform th:nth-child(2),
+.page__content .modeling-table--platform td:nth-child(2) { width: 21%; }
+.page__content .modeling-table--platform th:nth-child(3),
+.page__content .modeling-table--platform td:nth-child(3) { width: 18%; }
+.page__content .modeling-table--platform th:nth-child(4),
+.page__content .modeling-table--platform td:nth-child(4) { width: 27%; }
+.page__content .modeling-table--platform th:nth-child(5),
+.page__content .modeling-table--platform td:nth-child(5) { width: 19%; }
+
+/* Table 2 — アカウントと授業運用 */
+.page__content .modeling-table--operations th:nth-child(1),
+.page__content .modeling-table--operations td:nth-child(1) { width: 15%; }
+.page__content .modeling-table--operations th:nth-child(2),
+.page__content .modeling-table--operations td:nth-child(2) { width: 16%; }
+.page__content .modeling-table--operations th:nth-child(3),
+.page__content .modeling-table--operations td:nth-child(3) { width: 13%; }
+.page__content .modeling-table--operations th:nth-child(4),
+.page__content .modeling-table--operations td:nth-child(4) { width: 20%; }
+.page__content .modeling-table--operations th:nth-child(5),
+.page__content .modeling-table--operations td:nth-child(5) { width: 20%; }
+.page__content .modeling-table--operations th:nth-child(6),
+.page__content .modeling-table--operations td:nth-child(6) { width: 16%; }
+
+/* ------------------------------------------------------------------ *
  * Code, pre, text diagrams
  * ------------------------------------------------------------------ */
 
@@ -802,6 +853,13 @@ pre {
     overflow: visible;
     border-color: #000000;
     font-size: 9.5pt;
+  }
+
+  /* The sheet is narrower than the screen content column: let the comparison
+     tables size to the page instead of holding a screen-width floor. */
+  .page__content .modeling-table {
+    min-width: 0;
+    table-layout: auto;
   }
 
   .page__content thead {
