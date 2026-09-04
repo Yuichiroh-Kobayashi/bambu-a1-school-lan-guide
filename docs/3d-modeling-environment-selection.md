@@ -361,7 +361,7 @@ OnshapeはWeb CADですが、iPad授業でPC向けブラウザUIをそのまま�
 
 Tinkercadよりも、利用開始前と操作習得の負担は大きくなります。
 
-初年度の検討では、招待された生徒について、日本語表示、再サインイン、既定単位の確認などが必要でした。この初回設定の流れは、旭川工業高等専門学校の大柏克彦先生が作成した[Onshape Education Enterpriseから招待されたときの設定方法](https://onshape.thick.jp/onshape/wp-content/uploads/2026/02/Education-Enterpriseから招待された学生の設定20260225.pdf)に、画面付きで整理されています。この資料は2026年2月に公開されたもので、2025年度の選定後に確認しました。当時の判断根拠ではありません。
+初年度の検討では、招待された生徒について、日本語表示、再サインイン、既定単位の確認などが必要でした。この初回設定の流れは、旭川工業高等専門学校の大柏哲治先生が作成した[Onshape Education Enterpriseから招待されたときの設定方法](https://onshape.thick.jp/onshape/wp-content/uploads/2026/02/Education-Enterpriseから招待された学生の設定20260225.pdf)に、画面付きで整理されています。この資料は2026年2月に公開されたもので、2025年度の選定後に確認しました。当時の判断根拠ではありません。
 
 また、スケッチ、拘束、寸法、フィーチャーという機械CADの考え方を学ぶ必要があります。
 
@@ -819,7 +819,7 @@ Blenderについては、次の順で検討します。
 - [Onshape：Mobile Touch Interface Navigation](https://cad.onshape.com/help/Content/Mobile/mobile_touch_interface_videos.htm)
 - [Onshape：Educator Classes](https://cad.onshape.com/help/Content/Plans/educator_classes.htm)
 - [Onshape：Educator Assignments](https://cad.onshape.com/help/Content/Plans/educator_assignments.htm)
-- [Onshape Education Enterpriseから招待されたときの設定方法（旭川工業高等専門学校 大柏克彦先生、2026年2月）](https://onshape.thick.jp/onshape/wp-content/uploads/2026/02/Education-Enterpriseから招待された学生の設定20260225.pdf)
+- [Onshape Education Enterpriseから招待されたときの設定方法（旭川工業高等専門学校 大柏哲治先生、2026年2月）](https://onshape.thick.jp/onshape/wp-content/uploads/2026/02/Education-Enterpriseから招待された学生の設定20260225.pdf)
 - [Shapr3D：Download Shapr3D](https://support.shapr3d.com/hc/en-us/articles/7859320619292-Download-Shapr3D)
 - [Shapr3D：Educational license](https://support.shapr3d.com/hc/en-us/articles/7873125176220-Shapr3D-Educational-license)
 - [Shapr3D：EDU license FAQ](https://support.shapr3d.com/hc/en-us/articles/12720283232284-EDU-license-FAQ)
