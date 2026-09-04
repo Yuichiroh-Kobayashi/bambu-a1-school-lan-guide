@@ -373,9 +373,9 @@ body {
  * Body typography
  * ------------------------------------------------------------------ */
 
-/* The content column, not the page, absorbs anything too wide to fit. The
-   cell and code rules below mean this never engages for the current content;
-   it is the structural guarantee that the page itself never scrolls sideways. */
+/* The content column, not the page, absorbs anything too wide to fit. A wide
+   table engages this at narrow viewports; the page itself never scrolls
+   sideways. */
 .page__content {
   overflow-x: auto;
 }
@@ -538,7 +538,7 @@ a:hover {
   font-size: 0.94rem;
   line-height: 1.7;
   /* Honoured by engines that apply overflow to the table wrapper box; the
-     cell rules below already guarantee the table never widens the page. */
+     .page__content scroller absorbs anything wider than the column. */
   overflow-x: auto;
 }
 
@@ -548,8 +548,11 @@ a:hover {
   border: 1px solid var(--color-border);
   text-align: start;
   vertical-align: top;
-  /* Long tokens must not push the table past the page width. */
-  overflow-wrap: anywhere;
+  /* Break inside a word only as a last resort. `anywhere` would also let a
+     column size below its longest word, which split short Latin product names
+     mid-token in the wide comparison tables; the content column scrolls
+     instead. */
+  overflow-wrap: break-word;
   word-break: normal;
   hyphens: none;
 }
