@@ -4,11 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>{% if page.title and page.title != site.title %}{{ page.title | strip_html }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-{%- if site.description %}
-<meta name="description" content="{{ site.description }}">
-{%- endif %}
+{%- seo -%}
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+{%- feed_meta -%}
 <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
 </head>
 <body>

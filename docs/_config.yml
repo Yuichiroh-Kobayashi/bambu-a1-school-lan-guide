@@ -3,3 +3,6 @@ description: 学校・FabLabでBambu Lab A1 / A1 miniを複数台・多数端末
 lang: ja
 markdown: kramdown
 baseurl: /bambu-a1-school-lan-guide
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
