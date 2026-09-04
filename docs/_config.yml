@@ -2,4 +2,4 @@ title: Bambu Lab A1 mini 学校LANモード運用ガイド
 description: 学校・FabLabでBambu Lab A1 / A1 miniを複数台・多数端末で共用するための公開メモ
 lang: ja
 markdown: kramdown
-theme: minima
+baseurl: /bambu-a1-school-lan-guide

@@ -1,0 +1,826 @@
+@charset "utf-8";
+
+/*
+ * Bambu Lab A1 mini 学校LANモード運用ガイド — presentation layer.
+ *
+ * Documentation-first stylesheet for a long technical guide. No external
+ * fonts, no CDN, no third-party runtime requests. Colours are declared as
+ * semantic tokens: the light palette lives on bare :root, the dark palette is
+ * repeated for the system preference and for the explicit data-theme override
+ * so the manual toggle wins in both directions.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Tokens
+ * ------------------------------------------------------------------ */
+
+:root {
+  --color-bg:          #fbfbfa;
+  --color-surface:     #ffffff;
+  --color-surface-alt: #f3f4f2;
+  --color-text:        #16181a;
+  --color-muted:       #4d5358;
+  --color-border:      #767c82;
+  --color-border-soft: #e2e5e7;
+  --color-link:        #12507c;
+  --color-link-hover:  #0c3a5b;
+  --color-focus:       #a8500a;
+  --color-success:     #1b6b3a;
+  --color-warning:     #8a4b00;
+  --color-info:        #12507c;
+  --color-accent:      #12507c;
+  --color-code-bg:     #f1f2f0;
+
+  /* Reference paragraph measure, kept for parity with the other site. */
+  --measure: 38rem;
+  /* Page content width for this long-form technical guide. */
+  --measure-wide: 54rem;
+
+  --gutter: 1.15rem;
+  --radius: 3px;
+
+  --font-body:
+    "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic Medium",
+    "Yu Gothic",
+    Meiryo,
+    "Noto Sans CJK JP",
+    "Noto Sans JP",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "IPAexGothic",
+    "IPAGothic",
+    sans-serif;
+
+  --font-mono:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    "DejaVu Sans Mono",
+    "Noto Sans Mono CJK JP",
+    "Noto Sans Mono",
+    "IPAGothic",
+    monospace;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg:          #14161a;
+    --color-surface:     #1b1e23;
+    --color-surface-alt: #22262c;
+    --color-text:        #edeff1;
+    --color-muted:       #b3bac1;
+    --color-border:      #8b939b;
+    --color-border-soft: #2e333a;
+    --color-link:        #8ec4ec;
+    --color-link-hover:  #b6dcf7;
+    --color-focus:       #ffb066;
+    --color-success:     #74d29a;
+    --color-warning:     #f0b268;
+    --color-info:        #8ec4ec;
+    --color-accent:      #8ec4ec;
+    --color-code-bg:     #22262c;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg:          #14161a;
+  --color-surface:     #1b1e23;
+  --color-surface-alt: #22262c;
+  --color-text:        #edeff1;
+  --color-muted:       #b3bac1;
+  --color-border:      #8b939b;
+  --color-border-soft: #2e333a;
+  --color-link:        #8ec4ec;
+  --color-link-hover:  #b6dcf7;
+  --color-focus:       #ffb066;
+  --color-success:     #74d29a;
+  --color-warning:     #f0b268;
+  --color-info:        #8ec4ec;
+  --color-accent:      #8ec4ec;
+  --color-code-bg:     #22262c;
+
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.85;
+  font-feature-settings: "palt" 0;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--measure-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --gutter: 1.6rem;
+  }
+}
+
+/* Anything with an id can be a jump target; keep it clear of the top edge. */
+[id] {
+  scroll-margin-top: 1.5rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Focus and skip link
+ * ------------------------------------------------------------------ */
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.site-main:focus {
+  outline: none;
+}
+
+.site-main:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: -3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -100vw;
+  top: 0;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background-color: var(--color-surface);
+  color: var(--color-link);
+  border: 2px solid var(--color-focus);
+  border-radius: var(--radius);
+  text-decoration: underline;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Header
+ * ------------------------------------------------------------------ */
+
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  padding-block: 0.9rem;
+}
+
+.site-brand {
+  margin: 0;
+  flex: 1 1 100%;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.site-brand__link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-brand__link:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.site-header__controls {
+  display: flex;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__item {
+  margin: 0;
+}
+
+.site-nav__link {
+  display: inline-block;
+  padding-block: 0.25rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav__link:hover {
+  color: var(--color-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+.site-nav__link.is-current {
+  color: var(--color-text);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom-color: var(--color-accent);
+}
+
+/* ------------------------------------------------------------------ *
+ * Theme toggle
+ * ------------------------------------------------------------------ */
+
+.theme-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+}
+
+.theme-toggle[hidden] {
+  display: none;
+}
+
+.theme-toggle__label {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.theme-toggle__options {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.theme-toggle__button {
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  padding: 0.2rem 0.6rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.theme-toggle__button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-link-hover);
+}
+
+/* State is carried by weight and border, not by colour alone. */
+.theme-toggle__button[aria-pressed="true"] {
+  font-weight: 700;
+  color: var(--color-text);
+  background-color: var(--color-surface-alt);
+  border-width: 2px;
+  border-color: var(--color-text);
+  padding: calc(0.2rem - 1px) calc(0.6rem - 1px);
+}
+
+/* ------------------------------------------------------------------ *
+ * Main / page frame
+ * ------------------------------------------------------------------ */
+
+.site-main {
+  flex: 1 0 auto;
+  padding-block: 2rem 3.5rem;
+}
+
+.page__header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.page__title {
+  margin: 0;
+  font-size: clamp(1.45rem, 1.1rem + 1.7vw, 2.05rem);
+  line-height: 1.45;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  overflow-wrap: break-word;
+}
+
+/* ------------------------------------------------------------------ *
+ * Body typography
+ * ------------------------------------------------------------------ */
+
+/* The content column, not the page, absorbs anything too wide to fit. The
+   cell and code rules below mean this never engages for the current content;
+   it is the structural guarantee that the page itself never scrolls sideways. */
+.page__content {
+  overflow-x: auto;
+}
+
+.page__content > :first-child {
+  margin-top: 0;
+}
+
+.page__content > :last-child {
+  margin-bottom: 0;
+}
+
+.page__content p {
+  margin-block: 0 1.35rem;
+}
+
+.page__content h2,
+.page__content h3,
+.page__content h4,
+.page__content h5,
+.page__content h6 {
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+.page__content h2 {
+  margin-block: 3rem 1.2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-soft);
+  font-size: clamp(1.22rem, 1.05rem + 0.7vw, 1.45rem);
+  letter-spacing: 0.005em;
+}
+
+.page__content h3 {
+  margin-block: 2.2rem 0.9rem;
+  font-size: clamp(1.06rem, 1rem + 0.35vw, 1.18rem);
+}
+
+.page__content h4 {
+  margin-block: 1.8rem 0.7rem;
+  font-size: 1rem;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
+
+.page__content h5,
+.page__content h6 {
+  margin-block: 1.6rem 0.6rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+/* Existing Markdown places bare `<a id="…"></a>` anchors before headings.
+   Keep them as jump targets without letting them add an empty line. */
+.page__content p:has(> a[id]:only-child:empty) {
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.page__content hr {
+  margin-block: 2.5rem;
+  border: 0;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+/* ------------------------------------------------------------------ *
+ * Links
+ * ------------------------------------------------------------------ */
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+.page__content a:active {
+  color: var(--color-link-hover);
+}
+
+/* ------------------------------------------------------------------ *
+ * Lists
+ * ------------------------------------------------------------------ */
+
+.page__content ul,
+.page__content ol {
+  margin-block: 0 1.35rem;
+  padding-inline-start: 1.7rem;
+}
+
+.page__content li {
+  margin-block: 0.3rem;
+}
+
+.page__content li > ul,
+.page__content li > ol {
+  margin-block: 0.3rem 0.5rem;
+}
+
+.page__content ul {
+  list-style: disc;
+}
+
+.page__content ul ul {
+  list-style: circle;
+}
+
+.page__content ol {
+  list-style: decimal;
+}
+
+.page__content ol ol {
+  list-style: lower-alpha;
+}
+
+.page__content li::marker {
+  color: var(--color-muted);
+}
+
+/* ------------------------------------------------------------------ *
+ * Blockquote
+ * ------------------------------------------------------------------ */
+
+.page__content blockquote {
+  margin-block: 0 1.5rem;
+  margin-inline: 0;
+  padding: 0.15rem 0 0.15rem 1.1rem;
+  border-left: 4px solid var(--color-border);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.page__content blockquote > :first-child {
+  margin-top: 0.9rem;
+}
+
+.page__content blockquote > :last-child {
+  margin-bottom: 0.9rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Tables
+ * ------------------------------------------------------------------ */
+
+.page__content table {
+  width: 100%;
+  max-width: 100%;
+  margin-block: 0 1.6rem;
+  border-collapse: collapse;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  /* Honoured by engines that apply overflow to the table wrapper box; the
+     cell rules below already guarantee the table never widens the page. */
+  overflow-x: auto;
+}
+
+.page__content th,
+.page__content td {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-border);
+  text-align: start;
+  vertical-align: top;
+  /* Long tokens must not push the table past the page width. */
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: none;
+}
+
+.page__content thead th {
+  background-color: var(--color-surface-alt);
+  font-weight: 700;
+  border-bottom-width: 2px;
+}
+
+.page__content tbody th {
+  background-color: var(--color-surface-alt);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ *
+ * Code, pre, text diagrams
+ * ------------------------------------------------------------------ */
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+}
+
+.page__content :not(pre) > code {
+  padding: 0.1em 0.35em;
+  font-size: 0.88em;
+  background-color: var(--color-code-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow-wrap: anywhere;
+}
+
+.page__content pre {
+  margin-block: 0 1.6rem;
+  padding: 0.9rem 1rem;
+  max-width: 100%;
+  overflow-x: auto;
+  background-color: var(--color-code-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  tab-size: 4;
+  /* Text diagrams rely on exact spacing: never reflow them. */
+  white-space: pre;
+}
+
+.page__content pre > code {
+  display: block;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.page__content .highlight,
+.page__content div.highlighter-rouge {
+  margin-block: 0 1.6rem;
+}
+
+.page__content .highlight pre,
+.page__content div.highlighter-rouge pre {
+  margin-block: 0;
+}
+
+.page__content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ------------------------------------------------------------------ *
+ * Footer
+ * ------------------------------------------------------------------ */
+
+.site-footer {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.3rem 1.5rem;
+  padding-block: 1.2rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Forced colors
+ * ------------------------------------------------------------------ */
+
+@media (forced-colors: active) {
+  .site-header,
+  .site-footer {
+    border-color: CanvasText;
+  }
+
+  .page__content table,
+  .page__content th,
+  .page__content td,
+  .page__content pre,
+  .page__content :not(pre) > code,
+  .theme-toggle__button {
+    border-color: CanvasText;
+  }
+
+  .page__content blockquote {
+    border-left-color: CanvasText;
+  }
+
+  .site-nav__link.is-current {
+    border-bottom-color: CanvasText;
+  }
+
+  :focus-visible {
+    outline: 3px solid CanvasText;
+    outline-offset: 2px;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Print
+ * ------------------------------------------------------------------ */
+
+@media print {
+  /* Specificity here must match the dark-palette rules above, and this block
+     comes later in the file, so print wins whichever theme was on screen. */
+  :root,
+  :root:not([data-theme="light"]),
+  :root[data-theme="dark"],
+  :root[data-theme="light"] {
+    --color-bg:          #ffffff;
+    --color-surface:     #ffffff;
+    --color-surface-alt: #ffffff;
+    --color-text:        #000000;
+    --color-muted:       #000000;
+    --color-border:      #000000;
+    --color-border-soft: #666666;
+    --color-link:        #000000;
+    --color-link-hover:  #000000;
+    --color-code-bg:     #ffffff;
+    --gutter: 0;
+
+    color-scheme: light;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+    font-size: 10.5pt;
+    line-height: 1.7;
+    display: block;
+  }
+
+  .skip-link,
+  .site-nav,
+  .theme-toggle {
+    display: none !important;
+  }
+
+  .site-header,
+  .site-footer {
+    background: none;
+    border-color: #000000;
+  }
+
+  .site-header__inner,
+  .site-footer__inner {
+    padding-block: 0.4rem;
+  }
+
+  .site-main {
+    padding-block: 1rem;
+  }
+
+  .wrap {
+    max-width: none;
+  }
+
+  a {
+    color: #000000;
+    text-decoration: underline;
+  }
+
+  .page__content h1,
+  .page__content h2,
+  .page__content h3,
+  .page__content h4,
+  .page__title {
+    break-after: avoid-page;
+    page-break-after: avoid;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .page__content p,
+  .page__content li {
+    orphans: 2;
+    widows: 2;
+  }
+
+  .page__content pre {
+    background: none;
+    border: 1px solid #000000;
+    overflow: visible;
+    /* pre-wrap keeps every existing space and only folds lines that would
+       otherwise run off the sheet, so text diagrams stay intact. */
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .page__content pre > code {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  .page__content :not(pre) > code {
+    background: none;
+    border: 1px solid #666666;
+  }
+
+  .page__content {
+    overflow: visible;
+  }
+
+  .page__content table {
+    overflow: visible;
+    border-color: #000000;
+    font-size: 9.5pt;
+  }
+
+  .page__content thead {
+    display: table-header-group;
+  }
+
+  .page__content tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .page__content th,
+  .page__content td {
+    border-color: #000000;
+  }
+
+  .page__content thead th {
+    background: none;
+  }
+
+  .page__content blockquote {
+    background: none;
+    border-left: 3px solid #000000;
+  }
+}
