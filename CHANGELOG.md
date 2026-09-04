@@ -27,3 +27,4 @@
 - `docs/3d-modeling-environment-selection.md` を新規追加しました。
 - グローバルナビゲーションへ「3Dモデリング」を追加しました。
 - READMEの公開記事一覧と、一般読者向け更新履歴を更新しました。
+- 幅の広い比較表で製品名が語中改行される問題に対し、セルの `overflow-wrap` を `anywhere` から `break-word` へ変更しました。
