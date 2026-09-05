@@ -5,11 +5,11 @@
 ## 公開記事
 
 - `docs/index.md`
-  - 学校でBambu Lab A1 miniを複数台運用するための導入設計――LANモードと多数ユーザー設定の初年度記録
+  - 学校でBambu Lab A1 miniを複数台運用するための導入設計―LANモードと多数ユーザー設定の初年度記録
 - `docs/classroom-practice-2025.md`
   - 中学校3年生160人規模で卒業記念プレートを3Dプリントした初年度実践
 - `docs/3d-modeling-environment-selection.md`
-  - 学校の3Dモデリング環境をどう選ぶか――作成・保存・確認・救出・卒業後まで見据える
+  - 学校の3Dモデリング環境をどう選ぶか―作成・保存・確認・救出・卒業後まで見据える
 
 ## GitHub Pages
 
