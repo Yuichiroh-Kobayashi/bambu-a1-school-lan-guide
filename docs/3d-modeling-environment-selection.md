@@ -820,7 +820,7 @@ Blenderについては、次の順で検討します。
 <a id="references"></a>
 ## 16. 参考資料
 
-- [情報・技術ワーキンググループ（文部科学省 中央教育審議会 初等中等教育分科会 教育課程部会）](https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/118/mext_02418.html)
+- [情報・技術ワーキンググループ（文部科学省 中央教育審議会 初等中等教育分科会 教育課程部会）](https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/118/index.html)
 - [同ワーキンググループ 取りまとめ案（PDF）](https://www.mext.go.jp/content/20260804-mxt_kyoiku01-000051433-1.pdf)
 - [東京書籍FAQ：3D-CADソフトウェアについて](https://faq.tokyo-shoseki.co.jp/fa/customer/web/knowledge8502.html)
 - [Autodesk：Tinkercad](https://www.autodesk.com/products/tinkercad/overview)

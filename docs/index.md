@@ -834,6 +834,6 @@ Bambu Lab A1 miniのLANモードは、生徒ごとのBambu Labクラウドアカ
 - [学校の3Dモデリング環境をどう選ぶか](3d-modeling-environment-selection.md)
 - [参考資料](references.md)
 - [更新履歴](changelog.md)
-- [情報・技術ワーキンググループ（文部科学省 中央教育審議会 初等中等教育分科会 教育課程部会）](https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/118/mext_02418.html)
+- [情報・技術ワーキンググループ（文部科学省 中央教育審議会 初等中等教育分科会 教育課程部会）](https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/118/index.html)
 - [同ワーキンググループ 取りまとめ案（PDF）](https://www.mext.go.jp/content/20260804-mxt_kyoiku01-000051433-1.pdf)
 - [GitHubリポジトリ](https://github.com/Yuichiroh-Kobayashi/bambu-a1-school-lan-guide)
