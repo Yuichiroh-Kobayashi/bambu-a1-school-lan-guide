@@ -82,6 +82,14 @@ STL等へ書き出す
 
 この記事に記載する製品情報は、2026年9月時点で確認した内容です。クラウドサービスの機能、料金、対応端末、アカウント条件は変更されるため、導入時には公式情報を再確認してください。
 
+### 制度の側でも、CADと造形は結び付けて検討されている
+
+次期学習指導要領の改訂に向けて、文部科学省 中央教育審議会 初等中等教育分科会 教育課程部会の情報・技術ワーキンググループが、取りまとめ案を公表しています。
+
+案では、中学校の「情報・技術科」を「情報技術」と「情報を基盤とした生産技術」の二つの領域で整理する方向が示されています。後者の内容項目案には「材料加工とデジタル製作」が置かれ、CADの操作や、デジタル加工機を考慮した設計・製作が挙げられています。3D CADで設計した複雑な形状の部品を3Dプリンタで具現化する学びも、具体例に示されています。
+
+まだ案であり、特定の製品を指定するものではありません。ただ、どのCADを選ぶかは、造形までの一連の流れとあわせて考える対象になります。本記事が、作成から保存、確認、救出、書き出し、造形までを一続きで扱うのは、そのためです。
+
 <a id="first-cad"></a>
 ## 2. 初めて触るCADをどう考えるか
 
@@ -812,6 +820,8 @@ Blenderについては、次の順で検討します。
 <a id="references"></a>
 ## 16. 参考資料
 
+- [情報・技術ワーキンググループ（文部科学省 中央教育審議会 初等中等教育分科会 教育課程部会）](https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/118/mext_02418.html)
+- [同ワーキンググループ 取りまとめ案（PDF）](https://www.mext.go.jp/content/20260804-mxt_kyoiku01-000051433-1.pdf)
 - [東京書籍FAQ：3D-CADソフトウェアについて](https://faq.tokyo-shoseki.co.jp/fa/customer/web/knowledge8502.html)
 - [Autodesk：Tinkercad](https://www.autodesk.com/products/tinkercad/overview)
 - [Tinkercad：Technical Requirements](https://www.tinkercad.com/help-center/technical-requirements)
