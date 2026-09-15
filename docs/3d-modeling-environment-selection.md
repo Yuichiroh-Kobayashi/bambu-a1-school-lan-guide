@@ -3,7 +3,7 @@ layout: page
 title: 学校の3Dモデリング環境をどう選ぶか―作成・保存・確認・救出・卒業後まで見据える
 ---
 
-[導入・LANモード運用ガイド](index.md) / [初年度の授業実践](classroom-practice-2025.md)
+[導入・LANモード運用ガイド](index.md) / [初年度の授業実践](classroom-practice-2025.md) / [OrcaSlicerへの移行受入試験](orcaslicer-migration-2026.md)
 
 卒業した生徒が、夏休みに学校へ遊びに来ました。
 
