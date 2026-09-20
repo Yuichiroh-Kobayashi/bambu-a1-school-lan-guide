@@ -572,15 +572,16 @@ a:hover {
  * Comparison tables in the modeling-environment article
  * ------------------------------------------------------------------ *
  *
- * Scoped to the two tables carrying `.modeling-table` via a Kramdown block
+ * Scoped to the three tables carrying `.modeling-table` via a Kramdown block
  * IAL, so the generic table rules above stay untouched for every other page.
  *
  * `table-layout: fixed` makes the declared column widths authoritative, which
- * is what lets the first "製品名" column render at the same width in both
- * tables. The percentages are of the same content column, so the two first
- * columns resolve to the same pixel width. Widths were tuned by measurement
- * so that the headers listed below stay on one line at desktop widths while
- * the body cells wrap normally; nothing is forced with a blanket nowrap.
+ * is what lets the first "製品名" column render at the same width in all three
+ * tables. The percentages are of the same content column, so the first columns
+ * resolve to the same pixel width; every table declares 15% for it. Widths were
+ * tuned by measurement so that the headers listed below stay on one line at
+ * desktop widths while the body cells wrap normally; nothing is forced with a
+ * blanket nowrap.
  */
 
 .page__content .modeling-table {
@@ -605,19 +606,25 @@ a:hover {
 .page__content .modeling-table--platform th:nth-child(5),
 .page__content .modeling-table--platform td:nth-child(5) { width: 19%; }
 
-/* Table 2 — アカウントと授業運用 */
-.page__content .modeling-table--operations th:nth-child(1),
-.page__content .modeling-table--operations td:nth-child(1) { width: 15%; }
-.page__content .modeling-table--operations th:nth-child(2),
-.page__content .modeling-table--operations td:nth-child(2) { width: 16%; }
-.page__content .modeling-table--operations th:nth-child(3),
-.page__content .modeling-table--operations td:nth-child(3) { width: 13%; }
-.page__content .modeling-table--operations th:nth-child(4),
-.page__content .modeling-table--operations td:nth-child(4) { width: 20%; }
-.page__content .modeling-table--operations th:nth-child(5),
-.page__content .modeling-table--operations td:nth-child(5) { width: 20%; }
-.page__content .modeling-table--operations th:nth-child(6),
-.page__content .modeling-table--operations td:nth-child(6) { width: 16%; }
+/* Table 2 — アカウントと費用 */
+.page__content .modeling-table--account th:nth-child(1),
+.page__content .modeling-table--account td:nth-child(1) { width: 15%; }
+.page__content .modeling-table--account th:nth-child(2),
+.page__content .modeling-table--account td:nth-child(2) { width: 28%; }
+.page__content .modeling-table--account th:nth-child(3),
+.page__content .modeling-table--account td:nth-child(3) { width: 33%; }
+.page__content .modeling-table--account th:nth-child(4),
+.page__content .modeling-table--account td:nth-child(4) { width: 24%; }
+
+/* Table 3 — 授業運用の機能 */
+.page__content .modeling-table--features th:nth-child(1),
+.page__content .modeling-table--features td:nth-child(1) { width: 15%; }
+.page__content .modeling-table--features th:nth-child(2),
+.page__content .modeling-table--features td:nth-child(2) { width: 22%; }
+.page__content .modeling-table--features th:nth-child(3),
+.page__content .modeling-table--features td:nth-child(3) { width: 37%; }
+.page__content .modeling-table--features th:nth-child(4),
+.page__content .modeling-table--features td:nth-child(4) { width: 26%; }
 
 /* ------------------------------------------------------------------ *
  * Code, pre, text diagrams

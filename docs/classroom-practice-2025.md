@@ -383,12 +383,13 @@ Tinkercad上で3Dモデルを編集する技能と、書き出された実ファ
 
 第1時の画面では完成して見えた3Dモデルが、第2時のスライスで造形上の問題を示し、第3時に班別のビルドプレートへ配置されました。3Dプリントの授業は、3Dモデルを作成する時間だけでは終わりません。そのモデルを見つけ、検査し、並べ、送信し、失敗したときに戻れるところまでが授業でした。
 
-初年度の結果を受けた次年度計画は、別ページで公開予定です。
+初年度の結果を受けた改善のうち、スライサーの更新案内と初期状態への対応は[OrcaSlicerへの移行受入試験](orcaslicer-migration-2026.md) に記録しています。提出方法、テンプレート、授業間の造形管理は別の課題として残ります。ソフトウェアを替えれば解決する、という整理はしていません。
 
 <a id="related-links"></a>
 ## 18. 関連リンク
 
 - [導入・LANモード運用ガイド](index.md)
+- [OrcaSlicerへの移行受入試験](orcaslicer-migration-2026.md)
 - [授業で使用したTinkercadテンプレート](https://www.tinkercad.com/things/57v20s9nSIM-?sharecode=FJK4fcE3Ni8Dz_eBi-_tWgpBCyQ6TcTBxa0Ho2BucuY)
 - [Bambu Lab公式Wikiのモデル修復手順](https://wiki.bambulab.com/ja/software/bambu-studio/fix-model)
 - [GitHubリポジトリ](https://github.com/Yuichiroh-Kobayashi/bambu-a1-school-lan-guide)
